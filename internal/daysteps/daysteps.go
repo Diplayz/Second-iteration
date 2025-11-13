@@ -68,7 +68,7 @@ func (ds DaySteps) ActionInfo() (string, error) {
 	if err != nil {
 		return "", fmt.Errorf("error calculating calories: %w", err)
 	}
-	spentRunCalories = spentRunCalories * 0.5
+
 	info := fmt.Sprintf("Количество шагов: %d.\nДистанция составила %.2f км.\nВы сожгли %.2f ккал.\n",
 		ds.Steps, distance, spentRunCalories)
 

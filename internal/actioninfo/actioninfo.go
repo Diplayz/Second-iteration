@@ -11,18 +11,19 @@ type DataParser interface {
 }
 
 func Info(dataset []string, dp DataParser) {
-
-	for i, ch := range dataset {
-		err := dp.Parse(ch)
+	for i, data := range dataset {
+		err := dp.Parse(data)
 		if err != nil {
-			log.Printf("Information formation error: %v", err)
+			log.Printf("Data parsing error (line %d): %w", i+1, err)
+			continue
 		}
-		i++
-		continue
+
+		info, err := dp.ActionInfo()
+		if err != nil {
+			log.Printf("Information formation error (line %d): %w", i+1, err)
+			continue
+		}
+
+		fmt.Println(info)
 	}
-	info, err := dp.ActionInfo()
-	if err != nil {
-		log.Printf("Information formation error%v", err)
-	}
-	fmt.Println(info)
 }
