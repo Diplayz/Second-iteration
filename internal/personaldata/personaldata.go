@@ -8,8 +8,7 @@ type Personal struct {
 	Height float64
 }
 
-func (p Personal) Print() {
-	fmt.Println("Имя:", p.Name)
-	fmt.Println("Вес:", p.Weight)
-	fmt.Println("Рост:", p.Height)
+func (p Personal) Print() string {
+	return fmt.Sprintf("Имя: %s\nВес: %.2f кг.\nРост: %.2f м.\n",
+		p.Name, p.Weight, p.Height)
 }
